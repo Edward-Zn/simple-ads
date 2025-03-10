@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # Application container
+  app:
+    # image: php:8.2-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: simple_ads_app
+    working_dir: /var/www
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8080:80
+    networks:
+      - simple_ads
+    depends_on:
+      - db
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=simple_ads
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+  
+  # MySQL container
+  db:
+    image: mysql:8.0
+    container_name: simple_ads_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: simple_ads
+    ports:
+      - 3307:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - simple_ads 
+
+  # Optional: phpMyAdmin container
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: simple_ads_phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 8081:80
+    depends_on:
+      - db
+    networks:
+      - simple_ads 
+
+volumes:
+  db_data:
+
+networks:
+  simple_ads:
