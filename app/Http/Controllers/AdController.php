@@ -27,24 +27,24 @@ class AdController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
-            'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'photos' => 'array|max:5',
+            'photos' => 'nullable|array|max:5',
+            'photos.*' => 'image|mimes:jpg,jpeg,png,gif,svg|max:2048',
         ]);
-    
+
         $photos = [];
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
                 $photos[] = $photo->store('photos', 'public');
             }
         }
-    
+
         Ad::create([
             'name' => $validated['name'],
             'description' => $validated['description'],
             'price' => $validated['price'],
             'photos' => json_encode($photos),
         ]);
-    
+
         return redirect()->route('ads.index')->with('success', 'Ad created successfully.');
     }
 }
