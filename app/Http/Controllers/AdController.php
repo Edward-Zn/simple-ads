@@ -27,7 +27,7 @@ class AdController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
-            'photos' => 'nullable|array|max:5',
+            'photos' => 'nullable|array|max:5', // 5 photos max for AD
             'photos.*' => 'image|mimes:jpg,jpeg,png,gif,svg|max:2048',
         ]);
 
