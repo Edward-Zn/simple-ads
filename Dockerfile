@@ -42,8 +42,12 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 # Set file permissions for Laravel
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
-    && chmod -R 775 /var/www/html/storage \
+    && chmod -R 777 /var/www/html/storage \
     && chmod -R 775 /var/www/html/bootstrap/cache
+
+# Laravel entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
 
 # Expose port 80 (Apache default)
 EXPOSE 80

@@ -24,6 +24,7 @@ services:
       - DB_DATABASE=simple_ads
       - DB_USERNAME=root
       - DB_PASSWORD=root
+    entrypoint: ["docker-entrypoint"]
   
   # MySQL container
   db:

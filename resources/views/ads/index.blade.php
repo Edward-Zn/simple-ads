@@ -26,7 +26,7 @@
                 $photos = json_decode($ad->photos, true);
             @endphp
             @foreach ($photos as $photo)
-                <img src="{{ asset('storage/' . $photo) }}" alt="Ad Photo" width="150">
+                <img src="{{ asset('storage/' . $photo) }}" alt="Ad Image" width="100" height="100" style="object-fit: cover; border-radius: 5px;">
             @endforeach
             @endif
         </li>

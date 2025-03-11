@@ -43,10 +43,45 @@
         <input type="file" name="photos[]" id="photos" multiple accept="image/*">
         @error('photos') <p class="error">{{ $message }}</p> @enderror
 
+        <!-- Preview Container -->
+        <div id="preview-container" style="margin-top: 10px; display: flex; gap: 10px;"></div>
+
         <button type="submit">Create Ad</button>
     </form>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('photos');
+            const previewContainer = document.getElementById('preview-container');
+
+            fileInput.addEventListener('change', function(event) {
+                previewContainer.innerHTML = ''; // Clear previous previews
+
+                const files = event.target.files;
+                if (files.length > 5) {
+                    alert("You can only upload up to 5 images.");
+                    fileInput.value = ''; // Reset input
+                    return;
+                }
+
+                Array.from(files).forEach(file => {
+                    if (!file.type.startsWith('image/')) return; // Skip non-image files
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.width = '100px';
+                        img.style.height = '100px';
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '5px';
+                        previewContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            });
+        });
+        
         document.addEventListener('DOMContentLoaded', function() {
             let fileInput = document.getElementById('photos');
 
@@ -57,7 +92,7 @@
             // Restore selected files on page load
             let savedPhotos = JSON.parse(localStorage.getItem('selectedPhotos') || '[]');
             if (savedPhotos.length > 0) {
-                
+
             }
         });
     </script>
