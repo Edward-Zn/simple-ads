@@ -40,7 +40,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Set file permissions for Laravel
-RUN chown -R www-data:www-data /var/www \
+RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
     && chmod -R 775 /var/www/html/storage \
     && chmod -R 775 /var/www/html/bootstrap/cache
