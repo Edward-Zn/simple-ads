@@ -7,20 +7,18 @@ use Illuminate\Http\Request;
 
 class AdController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Display the list of ads
     public function index()
     {
-        //
+        $ads = Ad::all();
+
+        return view('ads.index', compact('ads'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Show the form to create a new ad
     public function create()
     {
-        //
+        return view('ads.create');
     }
 
     public function store(Request $request)
@@ -48,37 +46,5 @@ class AdController extends Controller
         ]);
     
         return redirect()->route('ads.index')->with('success', 'Ad created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ad $ad)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Ad $ad)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Ad $ad)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Ad $ad)
-    {
-        //
     }
 }
