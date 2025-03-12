@@ -4,7 +4,13 @@
 ### Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/simple-ads.git
+git clone https://github.com/Edward-Zn/simple-ads.git
+cd simple-ads
+```
+
+Or with SSH
+```bash
+git clone git@github.com:Edward-Zn/simple-ads.git
 cd simple-ads
 ```
 ### Build the Docker containers:
