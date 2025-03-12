@@ -1,0 +1,69 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Center and style the title */
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+/* Style the link to "create" page */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Form adjustments */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Make buttons look nicer */
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Image preview styling */
+.preview-container img {
+    width: 100px;
+    height: auto;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}

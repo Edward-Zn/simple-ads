@@ -20,6 +20,7 @@ cd /var/www/html
 # Ensure storage and cache directories are set up correctly
 mkdir -p storage/framework/{sessions,views,cache}
 chmod -R 775 storage bootstrap/cache
+chmod -R 777 /var/www/html/storage \
 chown -R www-data:www-data storage bootstrap/cache
 
 # Run Laravel setup commands
