@@ -17,6 +17,18 @@ echo "MySQL is ready. Starting the app..."
 # Change directory to the Laravel root
 cd /var/www/html
 
+# Ensure storage and cache directories are set up correctly
+mkdir -p storage/framework/{sessions,views,cache}
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+
+# Run Laravel setup commands
+composer install --no-interaction --optimize-autoloader
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan migrate --force
+
 # Run database migrations
 php artisan migrate --force
 
