@@ -35,6 +35,8 @@ Open your browser and navigate to http://localhost:8080.
 Use the form to create ads with a name, description, price, and images.
 Check the ads displayed on the main page and ensure the images are properly uploaded and displayed.
 
+---
+
 #### Notes:
 If you need to restart the containers, you can run:
 
