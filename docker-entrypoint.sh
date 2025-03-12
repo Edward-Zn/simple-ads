@@ -3,6 +3,12 @@
 # Exit immediately if a command exits with a non-zero status
 set -e 
 
+# Ensure the environment file exists
+if [ ! -f /var/www/html/.env ]; then
+    echo ".env file not found!"
+    exit 1
+fi
+
 # Set correct permissions
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
@@ -18,8 +24,8 @@ echo "MySQL is ready. Starting the app..."
 cd /var/www/html
 
 # Ensure storage and cache directories are set up correctly
-mkdir -p storage/framework/{sessions,views,cache}
-chmod -R 775 storage bootstrap/cache
+mkdir -p storage/framework/{sessions,views,cache} \
+chmod -R 775 storage bootstrap/cache \
 chmod -R 777 /var/www/html/storage \
 chown -R www-data:www-data storage bootstrap/cache
 
@@ -28,7 +34,6 @@ composer install --no-interaction --optimize-autoloader
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
-php artisan migrate --force
 
 # Run database migrations
 php artisan migrate --force
