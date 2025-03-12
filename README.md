@@ -3,15 +3,21 @@
 ## Setup Instructions
 ### Clone the repository to your local machine:
 
-bash
-git clone https://github.com/your-username/simple-ads.git
+```bash
+git clone https://github.com/Edward-Zn/simple-ads.git
 cd simple-ads
+```
 
+Or with SSH
+```bash
+git clone git@github.com:Edward-Zn/simple-ads.git
+cd simple-ads
+```
 ### Build the Docker containers:
 
-bash
+```bash
 docker-compose up --build
-
+```
 This will build the application container, MySQL container, and phpMyAdmin container.
 
 ### Running the Application
@@ -23,9 +29,9 @@ Once the containers are built, you can access the application by visiting:
 ### Building the Docker Image
 If you need to rebuild the Docker image, run the following command:
 
-bash
+```bash
 docker-compose build
-
+```
 This will rebuild the Docker images for the application.
 
 ### Testing
@@ -35,16 +41,18 @@ Open your browser and navigate to http://localhost:8080.
 Use the form to create ads with a name, description, price, and images.
 Check the ads displayed on the main page and ensure the images are properly uploaded and displayed.
 
+---
+
 #### Notes:
 If you need to restart the containers, you can run:
 
-bash
+```bash
 docker-compose restart
-
+```
 If you encounter any issues with MySQL connection, make sure the database container is running by checking:
 
-bash
+```bash
 docker ps
-
+```
 Docker environment settings are in the .env file
 Local environment can be set in .env.local file
