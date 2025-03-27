@@ -41,5 +41,5 @@ php artisan migrate --force
 # Ensure storage is linked
 php artisan storage:link
 
-# Start Apache (since you're using Apache, not PHP-FPM)
+# Start Apache
 exec apache2-foreground
